@@ -1,4 +1,4 @@
-/* Base Styles */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -110,7 +110,7 @@ body {
     to { transform: translateY(-50%) rotate(360deg); }
   }
 
-  /* Home Page Specific Styles */
+
 .home-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -243,7 +243,7 @@ body {
     line-height: 1.6;
   }
   
-  /* Responsive adjustments */
+
   @media (max-width: 768px) {
     .hero-section h1 {
       font-size: 2rem;
