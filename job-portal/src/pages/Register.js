@@ -19,7 +19,7 @@ const Register = () => {
       ...formData,
       [name]: value
     });
-    // Clear error when user types
+  
     if (errors[name]) {
       setErrors({
         ...errors,
@@ -69,14 +69,14 @@ const Register = () => {
         password: formData.password
       });
       
-      // Handle successful registration
+      
       console.log('Registration successful:', response.data);
       navigate('/login', { state: { registrationSuccess: true } });
       
     } catch (error) {
       console.error('Registration error:', error.response?.data);
       
-      // Handle different error cases
+      
       if (error.response?.data?.error === 'Email already exists') {
         setErrors({ email: 'Email is already registered' });
       } else {
