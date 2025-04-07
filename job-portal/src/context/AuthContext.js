@@ -1,4 +1,4 @@
-// src/context/AuthContext.js
+
 import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
         { withCredentials: true }
       );
 
-      setUser(res.data.user); // Or whatever you return from backend
+      setUser(res.data.user); 
       return { success: true };
     } catch (err) {
       console.error('Login error:', err.response?.data);
