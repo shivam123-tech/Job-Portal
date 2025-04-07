@@ -18,8 +18,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/jobportal
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.error('MongoDB Connection Error:', err));
 
-// User Model (replace your mock database)
-const User = require('./models/User'); // You'll need to create this model
+const User = require('./models/User'); 
 
 // Passport Configuration
 passport.use(new LocalStrategy({
@@ -78,7 +77,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Routes (keeping your existing endpoints)
+// Routes
 app.post('/login', passport.authenticate('local'), (req, res) => {
   res.json({ 
     success: true, 
@@ -113,7 +112,7 @@ app.get('/user', (req, res) => {
   }
 });
 
-// Updated register endpoint
+
 app.post('/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -124,10 +123,9 @@ app.post('/register', async (req, res) => {
       return res.status(400).json({ error: 'Email already exists' });
     }
     
-    // Create user (password will be hashed automatically via User model)
     const user = await User.create({ name, email, password });
     
-    // Auto-login after registration
+
     req.login(user, (err) => {
       if (err) throw err;
       res.status(201).json({
@@ -146,7 +144,6 @@ app.post('/register', async (req, res) => {
   }
 });
 
-// Keep your existing jobs endpoint
 app.get('/jobs', (req, res) => {
   const jobs = [
     { id: 1, title: 'Frontend Developer', company: 'Tech Corp', location: 'Remote', salary: '$80k - $100k' },
